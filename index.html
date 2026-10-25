@@ -305,7 +305,7 @@
 </div>
 
 <script>
-  var LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbyequYhYZoWBNHSwRR_VuNax53MKCQDsfJo0IROsKWIEUaCqJCPrDJWGqQwaxtzxzNG/exec";
+  var LEAD_ENDPOINT = "https://script.google.com/macros/s/AKfycbwkde1pNHszZi8f1mP7itQt70WOfnYNTE9leng0Eq4tiOQC1xbRZs-135abdymCuGHI/exec";
   var REDIRECT_URL = "https://mayurskylife.in";
 
   var form = document.getElementById('leadForm');
@@ -371,17 +371,19 @@
       overlay.classList.add('show');
       setTimeout(function(){
         window.location.href = REDIRECT_URL;
-      }, 1400);
+      }, 1600);
     };
 
     if(LEAD_ENDPOINT){
       fetch(LEAD_ENDPOINT, {
         method: "POST",
         mode: "no-cors",
-        headers: { "Content-Type": "text/plain" },
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       })
-      .then(function(){ goToNextStep(); })
+      .then(function(){
+        goToNextStep();
+      })
       .catch(function(err){
         console.error("Lead submission failed:", err);
         goToNextStep();
